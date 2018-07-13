@@ -153,6 +153,6 @@ Another shortcoming could be that straight lines work well for long straight dri
 
 ### 3. Suggest possible improvements to your pipeline
 
-A possible improvement would be to ...
+A possible improvement would be to allow for time dependency estimation - usage of a kalman filter for evaulating the location of the lanes between frames. 
 
-Another potential improvement could be to ...
+Another potential improvement could be to change lane representation from a straight line to a polynomial or a-parametric representation, as curves are compeletely disregarded in the current pipeline.
