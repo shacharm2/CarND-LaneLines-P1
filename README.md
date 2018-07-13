@@ -5,7 +5,7 @@
 - [**Finding Lane Lines on the Road**](#finding-lane-lines-on-the-road)
                 - [Test images](#test-images)
 - [**Project strategy**](#project-strategy)
-                - [Reflection](#reflection)
+- [Reflection](#reflection)
                 - [1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.](#1-describe-your-pipeline-as-part-of-the-description-explain-how-you-modified-the-drawlines-function)
                 - [2. Identify potential shortcomings with your current pipeline](#2-identify-potential-shortcomings-with-your-current-pipeline)
                 - [3. Suggest possible improvements to your pipeline](#3-suggest-possible-improvements-to-your-pipeline)
@@ -77,7 +77,7 @@ L,b channels are used to mask white & yellow patches, while the a channel is irr
 **4. Road lanes detection** - as anomaly. Look for the 95% percentile of Luminance and b-channel yellow markings in the picture. Thus, no need for absolute values, only the 5% as outliers assumption.
 
 
-### Reflection
+# Reflection
 
 ### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
 
@@ -141,7 +141,6 @@ In order to draw a single line on the left and right lanes, I modified the draw_
 Final results:
 
 ![alt text](images/annotated3.png)
-
 
 ### 2. Identify potential shortcomings with your current pipeline
 
