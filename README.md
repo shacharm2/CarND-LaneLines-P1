@@ -8,7 +8,7 @@
         - [Test images with annotations](#test-images-with-annotations)
 - [**Project strategy**](#project-strategy)
 - [**Reflection**](#reflection)
-        - [***1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.***](#1-describe-your-pipeline-as-part-of-the-description-explain-how-you-modified-the-drawlines-function)
+        - [**1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.**](#1-describe-your-pipeline-as-part-of-the-description-explain-how-you-modified-the-drawlines-function)
         - [***2. Identification of potential shortcomings with current pipeline***](#2-identification-of-potential-shortcomings-with-current-pipeline)
         - [***3. Possible improvements to your pipeline***](#3-possible-improvements-to-your-pipeline)
 
@@ -82,7 +82,7 @@ L,b channels are used to mask white & yellow patches, while the a channel is irr
 
 # **Reflection**
 
-### ***1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.***
+### **1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.**
 
 The pipeline can be broken down to 11 separated steps. There are several extra preprocessing steps added in order to increase robustness to the input image, focusing on outliers filtering image-adaptive calculations, lowering fixed-thresholds dependencies as much as possible. 
 
@@ -161,7 +161,7 @@ The challenge video presented a few challenges:
 2. changing road color, can be seen two different colors and two boundaries, both of which has caused outlier hough lines
 3. shadows - different illumination has caused multiple outlier lines as well
 
-Working in the CIELab colorspace and treating lanes as road outliers has increase robustness to these illumination based noise.
+Working in the native CIELab colorspace and treating lanes as road outliers has increase robustness to these illumination based noise.
 
 
 
