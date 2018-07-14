@@ -85,7 +85,7 @@ L,b channels are used to mask white & yellow patches, while the a channel is irr
 
 ### **1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.**
 
-The pipeline can be broken down to 11 separated steps. There are several extra preprocessing steps added in order to increase robustness to the input image, focusing on outliers filtering image-adaptive calculations, lowering fixed-thresholds dependencies as much as possible. 
+The pipeline can be broken down to 10 separated steps. There are several extra preprocessing steps added in order to increase robustness to the input image, focusing on outliers filtering image-adaptive calculations, lowering fixed-thresholds dependencies as much as possible. 
 
 The pipeline cosists of the following steps:
 
@@ -123,8 +123,8 @@ The pipeline cosists of the following steps:
 | ![](images/L_mask3.png) | ![](images/b_mask3.png) | ![](images/Lb_mask3.png) |
 
 4. Gaussian blur - prior to Canny 
-6. Adaptive Canny - low/high thresholds as 25/75 image percentile
-7. Apply ROI - the region of interest is a trapezoid between lower most part of the image (max Y)
+5. Adaptive Canny - low/high thresholds as 25/75 image percentile
+6. Apply ROI - the region of interest is a trapezoid between lower most part of the image (max Y)
 
 <div style="text-align:center" markdown="1">
 
@@ -133,20 +133,20 @@ The pipeline cosists of the following steps:
 </div>
 
 
-8. Retrieve Hough lines
+7. Retrieve Hough lines
 
     
     allowing max_line_gap is large, since it is require to join the defragment lane section as well.
 
-9.  Cost function 
+8.  Cost function 
 
     Calculate for left & right lanes, a score function for every line, based on angle (closest to 45), line around 40/60 percentile of the width, proximity to lower part of the image
 
-10.  Outlier filtering
+9.  Outlier filtering
 
      calculate for left & right lanes the angle and intersection and filter out outliers (outside the standard deviation).
 
-11.  Estimate lanes
+10.  Estimate lanes
 
      From the inliers, evaluate the line - from the bottom of the image up to the highest detected point. 
      Finally Evaluate and estimate Left & Right lanes.
