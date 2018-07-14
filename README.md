@@ -11,6 +11,7 @@
         - [**1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.**](#1-describe-your-pipeline-as-part-of-the-description-explain-how-you-modified-the-drawlines-function)
         - [***2. Identification of potential shortcomings with current pipeline***](#2-identification-of-potential-shortcomings-with-current-pipeline)
         - [***3. Possible improvements to your pipeline***](#3-possible-improvements-to-your-pipeline)
+- [References & Ideas](#references--ideas)
 
 
 # **Finding Lane Lines on the Road**
@@ -187,3 +188,17 @@ Another potential improvement could be to change lane representation from a stra
 
 Shadows specifically can be preprocessed and revmoed, as shown in [An Efficient and Robust Moving Shadow Removal Algorithm and Its Applications in ITS](https://asp-eurasipjournals.springeropen.com/articles/10.1155/2010/945130), [Shadow Removal from a Single Image](http://lxu.me/mypapers/XuL_ShadowRemoval.pdf), or any of the variety listed in [Study of Different Shadow Detection and Removal Algorithm](https://pdfs.semanticscholar.org/5fef/1b8c6655a6dcdd66684aaa9f101b726090cb.pdf)
 
+
+# References & Ideas
+
+- Gimp white balance algorithm -  [GIMP's White balance](https://pippin.gimp.org/image-processing/chapter-automaticadjustments.html)
+
+- HSV/HSL filtering -[HSV filtering in lane finding example](https://github.com/Kidra521/carnd/blob/master/p1_lane_lines_detection/P1.ipynb) 
+
+    A different colorspace, in which HSV colorpsace has been used. HSV (or HSL) are more device specific. 
+    Also, there has been usage of fixed, non adaptive thresholding
+
+- masking and HSL masking 
+    
+    In this project, masks of different channels have been implemented, similar to  [Lane Finding from Video Feeds](http://jeffwen.com/2017/02/23/lane_finding). 
+    The main difference is the different colorspace and applying edge detection on the masks as the output, rather than re-applying them on the original image
