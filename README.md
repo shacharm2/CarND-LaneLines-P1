@@ -151,9 +151,19 @@ The pipeline cosists of the following steps:
     
 In order to draw a single line on the left and right lanes, I modified the draw_lines() function by spliting to a positive & negative lines (all inliers, post outlier filtering) and extrapolating from the bottom of the image up to the highest point detected. The width is constant, after evaluating the width as the std of the (rotated) points has yielded "jumpy" results.
 
-Final results:
+**Challenge video**
 
-![alt text](images/annotated3.png)
+![alt text](images/challenge.png)
+
+The challenge video presented a few challenges:
+
+1. the vehicle's front is showing - a source for many outliers
+2. changing road color, can be seen two different colors and two boundaries, both of which has caused outlier hough lines
+3. shadows - different illumination has caused multiple outlier lines as well
+
+Working in the CIELab colorspace and treating lanes as road outliers has increase robustness to these illumination based noise.
+
+
 
 ### ***2. Identification of potential shortcomings with current pipeline*** 
 
