@@ -113,7 +113,7 @@ The pipeline cosists of the following steps:
 </div>
 
 
-1. CIELab 95 percentile thresholding 
+3. CIELab 95 percentile thresholding 
     
     Threshold the L + b and add them to create a signel relevant mask image. 
 
