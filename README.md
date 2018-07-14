@@ -88,7 +88,7 @@ The pipeline can be broken down to 11 separated steps. There are several extra p
 
 The pipeline cosists of the following steps:
 
-1. White balance - initial illuminiation is unknown and white balance tries limiting the dynamic range of input illuminations. Gray world assumption assumes a balanced light source. The basic assumption in current project is sun light, a balanced source light. The gray-world white balance algorithm has been rewritten according to [GIMP Automatic white balance](https://pippin.gimp.org/image-processing/chapter-automaticadjustments.html)
+1. White balance - initial illuminiation is unknown and white balance tries limiting the dynamic range of input illuminations. Gray world assumption assumes a balanced light source. The basic assumption in current project is sun light, a balanced light source. The gray-world white balance algorithm has been rewritten according to [GIMP Automatic white balance](https://pippin.gimp.org/image-processing/chapter-automaticadjustments.html)
 
 2. CIELab color space
 
