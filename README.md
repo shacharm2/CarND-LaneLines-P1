@@ -77,7 +77,7 @@ L,b channels are used to mask white & yellow patches, while the a channel is irr
 </div>
 
 
-**4. Road lanes detection** - as anomaly. Look for the 95% percentile of Luminance and b-channel yellow markings in the picture. Thus, no need for absolute values, only the 5% as outliers assumption.
+**4. Road lanes detection** - as anomaly. Look for the 95 percentile of Luminance and b-channel yellow markings in the picture. Thus, no need for absolute values, only the 5 percentile as outliers assumption.
 
 
 # **Reflection**
@@ -92,9 +92,11 @@ The pipeline cosists of the following steps:
 
 2. CIELab color space
 
-    working in the native colorspace of our target detection target allows simpler means of detection. 
+    Computer vision done in the native colorspace of our target detection target allows simpler means of detection. 
 
-    It can be seen the L channel is similar to a grayscale image,without color knowledge coded into it. the b channel highlights the yellow parts. Finally, as expected, the a channel contains no relevant information for neigther yellow or white lanes.
+    It can be seen the L channel has similar characteristics to a grayscale image, without color knowledge coded into it. the b channel highlights the yellow parts. Finally, as expected, the a channel contains no relevant information for neigther yellow or white lanes. 
+
+    This is a sort of dimensionality reduction, where relevant color features exist only in two color dimensions.
 
 
 <div style="text-align:center" markdown="1">
@@ -111,7 +113,7 @@ The pipeline cosists of the following steps:
 </div>
 
 
-3. CIELab 95% thresholding 
+1. CIELab 95 percentile thresholding 
     
     Threshold the L + b and add them to create a signel relevant mask image. 
 
@@ -120,7 +122,7 @@ The pipeline cosists of the following steps:
 | ![](images/L_mask3.png) | ![](images/b_mask3.png) | ![](images/Lb_mask3.png) |
 
 4. Gaussian blur - prior to Canny 
-6. Adaptive Canny - low/high thresholds as 25%/75% image percentile
+6. Adaptive Canny - low/high thresholds as 25/75 image percentile
 7. Apply ROI - the region of interest is a trapezoid between lower most part of the image (max Y)
 
 <div style="text-align:center" markdown="1">
@@ -137,7 +139,7 @@ The pipeline cosists of the following steps:
 
 9.  Cost function 
 
-    Calculate for left & right lanes, a score function for every line, based on angle (closest to 45), line around 40/60% of the width, proximity to lower part of the image
+    Calculate for left & right lanes, a score function for every line, based on angle (closest to 45), line around 40/60 percentile of the width, proximity to lower part of the image
 
 10.  Outlier filtering
 
@@ -149,7 +151,7 @@ The pipeline cosists of the following steps:
      Finally Evaluate and estimate Left & Right lanes.
 
     
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by spliting to a positive & negative lines (all inliers, post outlier filtering) and extrapolating from the bottom of the image up to the highest point detected. The width is constant, after evaluating the width as the std of the (rotated) points has yielded "jumpy" results.
+In order to draw a single line on the left and right lanes, I modified the draw_lines() function by spliting to a positive & negative angle lines (of which all are inliers, post outlier filtering) and extrapolating from the bottom of the image up to the highest point detected. The width is constant, after evaluating the width as the std of the (rotated) points has yielded "jumpy" and unsteady results.
 
 **Challenge video**
 
@@ -161,14 +163,14 @@ The challenge video presented a few challenges:
 2. changing road color, can be seen two different colors and two boundaries, both of which has caused outlier hough lines
 3. shadows - different illumination has caused multiple outlier lines as well
 
-Working in the native CIELab colorspace and treating lanes as road outliers has increase robustness to these illumination based noise.
+Working in the native CIELab colorspace and treating lanes as road outliers has increase robustness to these illumination based noise. Residual outliers have been filtered out in the consequent stages of the pipeline.
 
 
 
 ### ***2. Identification of potential shortcomings with current pipeline*** 
 
 
-One potential shortcoming would be what would happen when the vehicle might change lanes, as it gives preference to lanes in the 40%/60% width of the image.
+One potential shortcoming would be what would happen when the vehicle might change lanes, as it gives preference to lanes in the 40/60 percentile width of the image.
 
 Another shortcoming could be that straight lines work well for long straight drives, but not as well for a lot of types of roads which are curved.
 
